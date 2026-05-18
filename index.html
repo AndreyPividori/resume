@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrey Pividori — Directeur de Projets</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ⚠️ EMAILJS CONFIG — À remplacer avec tes vraies clés (voir guide de déploiement)
+  // 1. Crée un compte sur https://www.emailjs.com
+  // 2. Remplace les 3 valeurs ci-dessous par tes clés personnelles
+  const EMAILJS_PUBLIC_KEY  = 'VOTRE_PUBLIC_KEY';   // Account > API Keys
+  const EMAILJS_SERVICE_ID  = 'VOTRE_SERVICE_ID';   // Email Services > Service ID
+  const EMAILJS_TEMPLATE_ID = 'VOTRE_TEMPLATE_ID';  // Email Templates > Template ID
+  document.addEventListener('DOMContentLoaded', () => {
+    if (EMAILJS_PUBLIC_KEY !== 'VOTRE_PUBLIC_KEY') {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+  });
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --cream-dark: #EAE5D8;
+    --ink: #1A1A18;
+    --ink-mid: #3A3A37;
+    --ink-light: #6E6E6A;
+    --gold: #B8892E;
+    --gold-light: #E8D5A3;
+    --gold-bg: #FFFCF4;
+    --white: #FFFFFF;
+    --border: rgba(26,26,24,0.11);
+    --border-strong: rgba(26,26,24,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; line-height: 1.6; }
+
+  /* ─── HERO ─────────────────────────────────────────── */
+  .hero { background: var(--ink); color: var(--cream); padding: 64px 48px 56px; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; border-radius:50%; border:1px solid rgba(255,255,255,0.05); pointer-events:none; }
+  .hero::after  { content:''; position:absolute; bottom:-120px; left:25%; width:520px; height:520px; border-radius:50%; border:1px solid rgba(255,255,255,0.03); pointer-events:none; }
+
+  .hero-inner { max-width:900px; margin:0 auto; display:flex; align-items:flex-start; gap:48px; position:relative; z-index:1; }
+
+  .avatar { width:110px; height:110px; border-radius:50%; border:2px solid var(--gold); flex-shrink:0; background:#2A2A26; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--gold-light); margin-top:4px; }
+
+  .hero-text { flex:1; }
+  .hero-label { font-size:10.5px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+
+  h1 { font-family:'Playfair Display',serif; font-size:clamp(40px,5.5vw,60px); font-weight:900; line-height:1.0; letter-spacing:-0.02em; color:var(--cream); white-space:nowrap; }
+
+  .hero-role { font-size:13px; font-weight:400; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,242,236,0.5); margin-top:10px; margin-bottom:22px; }
+
+  .hero-bio { font-size:14.5px; font-weight:300; color:rgba(245,242,236,0.72); max-width:540px; line-height:1.78; margin-bottom:28px; }
+
+  .hero-pillars { display:flex; flex-wrap:wrap; gap:10px; }
+  .pillar { display:flex; align-items:center; gap:8px; padding:7px 16px 7px 12px; border:0.5px solid rgba(184,137,46,0.4); border-radius:6px; background:rgba(184,137,46,0.08); }
+  .pillar-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+  .pillar span { font-size:12px; font-weight:500; color:var(--gold-light); letter-spacing:0.03em; }
+
+  /* ─── CONTACT BAR ──────────────────────────────────── */
+  .contact-bar { background:var(--cream-dark); border-bottom:0.5px solid var(--border-strong); padding:13px 48px; }
+  .contact-bar-inner { max-width:900px; margin:0 auto; display:flex; gap:28px; align-items:center; flex-wrap:wrap; }
+
+  .contact-item { display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--ink-mid); text-decoration:none; transition:color 0.15s; cursor:pointer; background:none; border:none; font-family:inherit; }
+  .contact-item:hover { color:var(--gold); }
+  .contact-item svg { width:13px; height:13px; opacity:0.45; flex-shrink:0; }
+
+  /* Lang toggle */
+  .lang-toggle { margin-left:auto; display:flex; align-items:center; gap:6px; background:var(--white); border:0.5px solid var(--border-strong); border-radius:100px; padding:4px 6px; cursor:pointer; transition:border-color 0.15s; }
+  .lang-toggle:hover { border-color:var(--gold); }
+  .lang-btn { font-size:11.5px; font-weight:600; letter-spacing:0.06em; padding:4px 10px; border-radius:100px; border:none; background:transparent; cursor:pointer; color:var(--ink-light); transition:all 0.18s; font-family:inherit; }
+  .lang-btn.active { background:var(--ink); color:var(--cream); }
+  .lang-flag { font-size:14px; }
+
+  /* ─── MAIN LAYOUT ──────────────────────────────────── */
+  .main { max-width:900px; margin:0 auto; padding:52px 48px; display:grid; grid-template-columns:1fr 268px; gap:52px; align-items:start; }
+
+  /* ─── SECTION TITLE ───────────────────────────────── */
+  .section { margin-bottom:48px; }
+  .section-title { font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; padding-bottom:10px; border-bottom:0.5px solid var(--border-strong); }
+
+  /* ─── EXP CARDS ────────────────────────────────────── */
+  .exp-card { background:var(--white); border:0.5px solid var(--border); border-radius:10px; margin-bottom:10px; overflow:hidden; transition:box-shadow 0.2s,border-color 0.2s; }
+  .exp-card:hover { box-shadow:0 3px 20px rgba(26,26,24,0.07); }
+  .exp-header { padding:18px 20px; cursor:pointer; display:flex; align-items:center; gap:14px; user-select:none; -webkit-user-select:none; }
+  .exp-icon { width:38px; height:38px; border-radius:8px; background:var(--cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:17px; }
+  .exp-meta { flex:1; min-width:0; }
+  .exp-title { font-size:14px; font-weight:600; color:var(--ink); line-height:1.25; }
+  .exp-subtitle { font-size:12px; color:var(--ink-light); margin-top:2px; }
+  .exp-right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; flex-shrink:0; }
+  .exp-period { font-size:11.5px; color:var(--gold); font-weight:600; white-space:nowrap; }
+  .exp-type { font-size:10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-light); }
+  .exp-chevron { width:18px; height:18px; color:var(--ink-light); transition:transform 0.25s; flex-shrink:0; }
+  .exp-card.open .exp-chevron { transform:rotate(180deg); }
+  .exp-card.open { border-color:rgba(184,137,46,0.3); }
+  .exp-card.open .exp-header { background:var(--gold-bg); }
+
+  .exp-body { max-height:0; overflow:hidden; transition:max-height 0.38s cubic-bezier(0.4,0,0.2,1); }
+  .exp-card.open .exp-body { max-height:1000px; }
+  .exp-body-inner { padding:0 20px 22px; border-top:0.5px solid var(--border); background:var(--gold-bg); }
+
+  .exp-context { font-size:13px; font-style:italic; color:var(--ink-light); background:var(--cream); border-left:2px solid var(--gold); padding:10px 14px; border-radius:0 6px 6px 0; margin:16px 0 14px; line-height:1.65; }
+  .exp-missions-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-light); margin-bottom:9px; }
+  .mission-list { list-style:none; }
+  .mission-list li { font-size:13px; color:var(--ink-mid); padding:5px 0 5px 18px; position:relative; line-height:1.55; border-bottom:0.5px solid rgba(26,26,24,0.05); }
+  .mission-list li:last-child { border-bottom:none; }
+  .mission-list li::before { content:''; position:absolute; left:0; top:13px; width:5px; height:5px; border-radius:50%; background:var(--gold); }
+  .tag-row { display:flex; flex-wrap:wrap; gap:5px; margin-top:13px; }
+  .tag { font-size:11px; font-weight:500; padding:3px 9px; background:var(--cream-dark); border:0.5px solid var(--border); border-radius:100px; color:var(--ink-mid); }
+
+  /* ─── TOOLS & METHODS ──────────────────────────────── */
+  .two-cols { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .tool-group-title { font-size:10px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-light); margin-bottom:12px; }
+  .tool-item { display:flex; align-items:flex-start; gap:8px; margin-bottom:9px; }
+  .tool-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px; }
+  .tool-name { font-size:13px; color:var(--ink-mid); line-height:1.4; }
+
+  /* ─── SIDEBAR ──────────────────────────────────────── */
+  .sidebar { position:sticky; top:28px; }
+  .sidebar-card { background:var(--white); border:0.5px solid var(--border); border-radius:10px; padding:20px; margin-bottom:12px; }
+  .sidebar-title { font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; padding-bottom:8px; border-bottom:0.5px solid var(--border); }
+  .skill-row { display:flex; align-items:flex-start; gap:9px; margin-bottom:8px; }
+  .skill-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:6px; }
+  .skill-name { font-size:12.5px; color:var(--ink-mid); line-height:1.4; }
+  .lang-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:9px; }
+  .lang-name { font-size:13px; color:var(--ink-mid); }
+  .lang-level { font-size:11px; color:var(--gold); font-weight:600; }
+  .hobby-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+  .hobby-item { display:flex; align-items:center; gap:7px; padding:7px 10px; background:var(--cream); border-radius:6px; border:0.5px solid var(--border); }
+  .hobby-emoji { font-size:14px; }
+  .hobby-text { font-size:11.5px; color:var(--ink-mid); line-height:1.3; }
+
+  /* ─── CONTACT MODAL ────────────────────────────────── */
+  .modal-overlay {
+    position:fixed; inset:0; background:rgba(26,26,24,0.55); backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center; z-index:1000;
+    opacity:0; pointer-events:none; transition:opacity 0.22s;
+    padding:24px;
+  }
+  .modal-overlay.visible { opacity:1; pointer-events:all; }
+
+  .modal {
+    background:var(--white); border-radius:16px; padding:40px; width:100%; max-width:500px;
+    box-shadow:0 24px 80px rgba(26,26,24,0.18);
+    transform:translateY(16px); transition:transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    position:relative;
+  }
+  .modal-overlay.visible .modal { transform:translateY(0); }
+
+  .modal-close {
+    position:absolute; top:16px; right:16px; width:32px; height:32px;
+    border-radius:50%; border:0.5px solid var(--border); background:var(--cream);
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    color:var(--ink-light); transition:all 0.15s; font-size:16px; line-height:1;
+  }
+  .modal-close:hover { background:var(--ink); color:var(--cream); }
+
+  .modal-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+  .modal-subtitle { font-size:13px; color:var(--ink-light); margin-bottom:28px; }
+
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .form-group { margin-bottom:16px; }
+  .form-group label { display:block; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-light); margin-bottom:7px; }
+  .form-group input,
+  .form-group textarea {
+    width:100%; padding:11px 14px;
+    border:0.5px solid var(--border-strong); border-radius:8px;
+    font-family:'DM Sans',sans-serif; font-size:13.5px; color:var(--ink);
+    background:var(--cream); transition:border-color 0.15s, box-shadow 0.15s;
+    outline:none; resize:none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(184,137,46,0.12); }
+  .form-group textarea { min-height:110px; }
+
+  .form-send {
+    width:100%; padding:13px; margin-top:4px;
+    background:var(--ink); color:var(--cream);
+    border:none; border-radius:8px; font-family:'DM Sans',sans-serif;
+    font-size:13.5px; font-weight:600; letter-spacing:0.04em;
+    cursor:pointer; transition:background 0.18s, transform 0.12s;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .form-send:hover { background:#333330; transform:translateY(-1px); }
+  .form-send:active { transform:translateY(0); }
+  .form-send svg { width:14px; height:14px; }
+
+  .form-success {
+    text-align:center; padding:32px 0 8px;
+    display:none;
+  }
+  .form-success .check { font-size:40px; margin-bottom:12px; }
+  .form-success h3 { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+  .form-success p { font-size:13.5px; color:var(--ink-light); line-height:1.6; }
+
+  /* ─── FOOTER ───────────────────────────────────────── */
+  footer { text-align:center; padding:28px; font-size:12px; color:var(--ink-light); border-top:0.5px solid var(--border); }
+
+  /* ─── RESPONSIVE ───────────────────────────────────── */
+  @media (max-width:740px) {
+    .hero { padding:44px 24px 40px; }
+    .hero-inner { flex-direction:column; gap:20px; }
+    h1 { font-size:36px; white-space:normal; }
+    .contact-bar { padding:12px 24px; }
+    .main { grid-template-columns:1fr; padding:36px 24px; gap:36px; }
+    .sidebar { position:static; }
+    .two-cols { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .modal { padding:28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="avatar">AP</div>
+    <div class="hero-text">
+      <p class="hero-label" data-fr="Portfolio · CV interactif" data-en="Portfolio · Interactive CV">Portfolio · CV interactif</p>
+      <h1>Andrey Pividori</h1>
+      <p class="hero-role" data-fr="Directeur de Projets" data-en="Project Director">Directeur de Projets</p>
+      <p class="hero-bio"
+        data-fr="Ingénieur en informatique industrielle (Polytech Tours), je dispose d'une double compétence technique et managériale qui me permet de piloter des projets complexes et innovants. Fort de plusieurs années d'expérience en gestion de projets IT dans le secteur bancaire international (FR, BE, LU, IT…), je traduis les enjeux business en livrables concrets — en combinant maîtrise des méthodes agiles, gestion des risques, conformité réglementaire et capacité à fédérer des équipes pluridisciplinaires."
+        data-en="Industrial computing engineer (Polytech Tours), I combine technical and managerial expertise to lead complex, innovative projects. With several years of IT project management experience in the international banking sector (FR, BE, LU, IT…), I translate business challenges into concrete deliverables — blending agile methodologies, risk management, regulatory compliance and the ability to unite cross-functional teams.">
+        Ingénieur en informatique industrielle (Polytech Tours), je dispose d'une double compétence technique et managériale qui me permet de piloter des projets complexes et innovants. Fort de plusieurs années d'expérience en gestion de projets IT dans le secteur bancaire international (FR, BE, LU, IT…), je traduis les enjeux business en livrables concrets — en combinant maîtrise des méthodes agiles, gestion des risques, conformité réglementaire et capacité à fédérer des équipes pluridisciplinaires.
+      </p>
+      <div class="hero-pillars">
+        <div class="pillar"><div class="pillar-dot"></div><span>Transformation &amp; Gouvernance</span></div>
+        <div class="pillar"><div class="pillar-dot"></div><span>Strategic Projects</span></div>
+        <div class="pillar"><div class="pillar-dot"></div><span>Banking Systems</span></div>
+        <div class="pillar"><div class="pillar-dot"></div><span>Risk &amp; Compliance</span></div>
+        <div class="pillar"><div class="pillar-dot"></div><span>Team Leadership</span></div>
+        <div class="pillar"><div class="pillar-dot"></div><span>IA &amp; Innovation</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ CONTACT BAR ════════════════════════════════════ -->
+<div class="contact-bar">
+  <div class="contact-bar-inner">
+    <button class="contact-item" onclick="openModal()" title="Me contacter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      andrey@pividori.fr
+    </button>
+    <a href="https://www.pividori.fr/resume" target="_blank" class="contact-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      pividori.fr/resume
+    </a>
+    <span class="contact-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      Tours, France
+    </span>
+    <a href="https://www.linkedin.com/in/andrey-pividori" target="_blank" class="contact-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <!-- Language toggle -->
+    <div class="lang-toggle" onclick="toggleLang()" title="Switch language">
+      <span class="lang-flag" id="flag">🇫🇷</span>
+      <button class="lang-btn active" id="btn-fr">FR</button>
+      <button class="lang-btn" id="btn-en">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MAIN ══════════════════════════════════════════ -->
+<div class="main">
+
+  <!-- ── LEFT COLUMN ─────────────────────────────────── -->
+  <div>
+
+    <!-- EXPERIENCES -->
+    <section class="section">
+      <h2 class="section-title" data-fr="Expériences professionnelles" data-en="Professional Experience">Expériences professionnelles</h2>
+
+      <!-- Card 1 – Project Director -->
+      <div class="exp-card" id="c1">
+        <div class="exp-header" onclick="toggle('c1')">
+          <div class="exp-icon">🏦</div>
+          <div class="exp-meta">
+            <div class="exp-title" data-fr="Directeur de Projets" data-en="Project Director">Directeur de Projets</div>
+            <div class="exp-subtitle" data-fr="Worldline · Tours (FR) · International" data-en="Worldline · Tours (FR) · International">Worldline · Tours (FR) · International</div>
+          </div>
+          <div class="exp-right">
+            <span class="exp-period">2024 — <span data-fr="Présent" data-en="Present">Présent</span></span>
+            <span class="exp-type">CDI</span>
+          </div>
+          <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <div class="exp-context"
+              data-fr="Pilotage de projets stratégiques pour un client grand compte (fintech/banking) dans un environnement international multi-pays (FR, BE, LU, IT). Interface directe entre équipes produit, métiers et direction client."
+              data-en="Leading strategic projects for a major account client (fintech/banking) in a multi-country international environment (FR, BE, LU, IT). Direct interface between product teams, business units and client management.">
+              Pilotage de projets stratégiques pour un client grand compte (fintech/banking) dans un environnement international multi-pays (FR, BE, LU, IT). Interface directe entre équipes produit, métiers et direction client.
+            </div>
+            <p class="exp-missions-label" data-fr="Missions clés" data-en="Key Responsibilities">Missions clés</p>
+            <ul class="mission-list">
+              <li data-fr="Pilotage de programmes stratégiques en interface entre équipes produit, métiers internes et client grand compte" data-en="Management of strategic programmes bridging product teams, internal business units and major account clients">Pilotage de programmes stratégiques en interface entre équipes produit, métiers internes et client grand compte</li>
+              <li data-fr="Traduction des enjeux business client en roadmap opérationnelle et livrables concrets" data-en="Translating client business challenges into an operational roadmap and concrete deliverables">Traduction des enjeux business client en roadmap opérationnelle et livrables concrets</li>
+              <li data-fr="Arbitrage entre évolutions produit et développements spécifiques (priorisation, valeur, risques)" data-en="Arbitrating between product evolutions and custom developments (prioritisation, value, risks)">Arbitrage entre évolutions produit et développements spécifiques (priorisation, valeur, risques)</li>
+              <li data-fr="Coordination des responsables de département pour garantir alignement, delivery et performance globale" data-en="Coordinating department heads to ensure alignment, delivery and overall performance">Coordination des responsables de département pour garantir alignement, delivery et performance globale</li>
+              <li data-fr="Pilotage des dispositifs Qualité, Risque et Conformité à une échelle multi-pôles (SOC, audits de première ligne, réglementaire)" data-en="Overseeing Quality, Risk and Compliance frameworks at multi-pole scale (SOC, first-line audits, regulatory)">Pilotage des dispositifs Qualité, Risque et Conformité à une échelle multi-pôles (SOC, audits de première ligne, réglementaire)</li>
+              <li data-fr="Coordination des audits et suivi des plans de remédiation" data-en="Coordinating audits and monitoring remediation plans">Coordination des audits et suivi des plans de remédiation</li>
+              <li data-fr="Mise en conformité réglementaire et contractuelle : DORA, BIA, DRP, tests de résilience" data-en="Regulatory and contractual compliance: DORA, BIA, DRP, resilience testing">Mise en conformité réglementaire et contractuelle : DORA, BIA, DRP, tests de résilience</li>
+              <li data-fr="Gestion transverse des risques opérationnels · Cybersécurité première ligne" data-en="Cross-functional operational risk management · First-line cybersecurity oversight">Gestion transverse des risques opérationnels · Cybersécurité première ligne</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">DORA</span><span class="tag">BIA / DRP</span><span class="tag">Risk Management</span>
+              <span class="tag">Audit</span><span class="tag">SOC</span><span class="tag">Compliance</span>
+              <span class="tag" data-fr="Multi-pays" data-en="Multi-country">Multi-pays</span><span class="tag">Archer</span><span class="tag">Planview</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 – Project Manager Worldline -->
+      <div class="exp-card" id="c2">
+        <div class="exp-header" onclick="toggle('c2')">
+          <div class="exp-icon">💳</div>
+          <div class="exp-meta">
+            <div class="exp-title" data-fr="Chef de Projets" data-en="Project Manager">Chef de Projets</div>
+            <div class="exp-subtitle" data-fr="Worldline · Tours (FR) · BENELUX" data-en="Worldline · Tours (FR) · BENELUX">Worldline · Tours (FR) · BENELUX</div>
+          </div>
+          <div class="exp-right">
+            <span class="exp-period">2021 — 2024</span>
+            <span class="exp-type">CDI</span>
+          </div>
+          <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <div class="exp-context"
+              data-fr="Gestion d'un portefeuille de projets autour de l'authentification 3D Secure — produit Worldline ACS (Access Control Server). Projets e-commerce pour des banques du BENELUX, en application des règlements des schémas bancaires Mastercard, Visa, CB."
+              data-en="Managing a portfolio of projects around 3D Secure authentication — Worldline ACS product (Access Control Server). E-commerce projects for BENELUX banks, applying Mastercard, Visa and CB card scheme regulations.">
+              Gestion d'un portefeuille de projets autour de l'authentification 3D Secure — produit Worldline ACS (Access Control Server). Projets e-commerce pour des banques du BENELUX, en application des règlements des schémas bancaires Mastercard, Visa, CB.
+            </div>
+            <p class="exp-missions-label" data-fr="Missions clés" data-en="Key Responsibilities">Missions clés</p>
+            <ul class="mission-list">
+              <li data-fr="Application des réglementations des schémas bancaires (Mastercard / Visa / CB) sur les systèmes 3D Secure" data-en="Applying card scheme regulations (Mastercard / Visa / CB) to 3D Secure systems">Application des réglementations des schémas bancaires (Mastercard / Visa / CB) sur les systèmes 3D Secure</li>
+              <li data-fr="Gestion de projets en environnement agile — portefeuille multi-clients bancaires" data-en="Project management in an agile environment — multi-client banking portfolio">Gestion de projets en environnement agile — portefeuille multi-clients bancaires</li>
+              <li data-fr="Recueil des besoins, pilotage et documentation des projets" data-en="Requirements gathering, project steering and documentation">Recueil des besoins, pilotage et documentation des projets</li>
+              <li data-fr="Construction et pilotage de roadmaps produit &amp; projet" data-en="Building and driving product &amp; project roadmaps">Construction et pilotage de roadmaps produit &amp; projet</li>
+              <li data-fr="Élaboration et suivi de plans projets, pilotage du budget et des charges" data-en="Developing and monitoring project plans, budget and resource management">Élaboration et suivi de plans projets, pilotage du budget et des charges</li>
+              <li data-fr="Gestion des risques, incidents et escalades" data-en="Risk, incident and escalation management">Gestion des risques, incidents et escalades</li>
+              <li data-fr="Coordination interne / externe (banques clientes, équipes produit, partenaires)" data-en="Internal / external coordination (client banks, product teams, partners)">Coordination interne / externe (banques clientes, équipes produit, partenaires)</li>
+              <li data-fr="Organisation des phases : build, UAT, release, run, facturation, garantie" data-en="Organising all project phases: build, UAT, release, run, invoicing, warranty">Organisation des phases : build, UAT, release, run, facturation, garantie</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">3D Secure</span><span class="tag">Mastercard</span><span class="tag">Visa</span>
+              <span class="tag">e-commerce banking</span><span class="tag">Agile</span><span class="tag">Budget</span>
+              <span class="tag">Roadmap</span><span class="tag">BENELUX</span><span class="tag">JIRA</span><span class="tag">ServiceNow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 – Keolis -->
+      <div class="exp-card" id="c3">
+        <div class="exp-header" onclick="toggle('c3')">
+          <div class="exp-icon">🚊</div>
+          <div class="exp-meta">
+            <div class="exp-title" data-fr="Chef de Projets IT" data-en="IT Project Manager">Chef de Projets IT</div>
+            <div class="exp-subtitle" data-fr="Keolis · Tours (FR) · Transports en commun" data-en="Keolis · Tours (FR) · Public Transport">Keolis · Tours (FR) · Transports en commun</div>
+          </div>
+          <div class="exp-right">
+            <span class="exp-period">2018 — 2021</span>
+            <span class="exp-type" data-fr="Alternance · 3 ans" data-en="Apprenticeship · 3 yrs">Alternance · 3 ans</span>
+          </div>
+          <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <div class="exp-context"
+              data-fr="Profil hybride chef de projets / développeur, en charge d'accompagner les métiers dans la modélisation, l'automatisation et l'optimisation de leurs outils — afin de fluidifier la communication inter-services."
+              data-en="Hybrid project manager / developer profile, tasked with supporting business units in modelling, automating and optimising their tools — to streamline inter-department communication.">
+              Profil hybride chef de projets / développeur, en charge d'accompagner les métiers dans la modélisation, l'automatisation et l'optimisation de leurs outils — afin de fluidifier la communication inter-services.
+            </div>
+            <p class="exp-missions-label" data-fr="Missions clés" data-en="Key Responsibilities">Missions clés</p>
+            <ul class="mission-list">
+              <li data-fr="Recueil des besoins métiers et modélisation des processus existants" data-en="Business requirements gathering and existing process modelling">Recueil des besoins métiers et modélisation des processus existants</li>
+              <li data-fr="Conception et développement d'outils d'automatisation sur mesure" data-en="Design and development of custom automation tools">Conception et développement d'outils d'automatisation sur mesure</li>
+              <li data-fr="Amélioration des flux et de la communication entre les services de l'entreprise" data-en="Improving workflows and inter-department communication">Amélioration des flux et de la communication entre les services de l'entreprise</li>
+              <li data-fr="Coordination entre équipes métiers et ressources techniques" data-en="Coordination between business teams and technical resources">Coordination entre équipes métiers et ressources techniques</li>
+            </ul>
+            <p class="exp-missions-label" style="margin-top:14px;" data-fr="Projet phare — Projection des maintenances tramways" data-en="Flagship project — Tram maintenance scheduling">Projet phare — Projection des maintenances tramways</p>
+            <ul class="mission-list">
+              <li data-fr="Création d'un système d'optimisation de l'ordonnancement des maintenances des tramways de Tours" data-en="Building an optimisation system for scheduling tram maintenance in Tours">Création d'un système d'optimisation de l'ordonnancement des maintenances des tramways de Tours</li>
+              <li data-fr="Prise en compte des contraintes imposées par Touraine Mobilités / la métropole" data-en="Factoring in constraints set by Touraine Mobilités and the metropolitan authority">Prise en compte des contraintes imposées par Touraine Mobilités / la métropole</li>
+              <li data-fr="Conception d'un moteur algorithmique de type IA pour la génération automatique de plannings optimaux" data-en="Designing an AI-based algorithmic engine for automatic generation of optimal schedules">Conception d'un moteur algorithmique de type IA pour la génération automatique de plannings optimaux</li>
+              <li data-fr="Développement full-stack : backend Python (algorithme d'optimisation) + interface web VueJS" data-en="Full-stack development: Python backend (optimisation algorithm) + VueJS web interface">Développement full-stack : backend Python (algorithme d'optimisation) + interface web VueJS</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Python</span><span class="tag">VueJS</span><span class="tag">IA / Algorithms</span>
+              <span class="tag">R&amp;D</span><span class="tag" data-fr="Automatisation" data-en="Automation">Automatisation</span>
+              <span class="tag" data-fr="Gestion de projets" data-en="Project Management">Gestion de projets</span>
+              <span class="tag" data-fr="Transports" data-en="Transport">Transports</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMATIONS / EDUCATION -->
+    <section class="section">
+      <h2 class="section-title" data-fr="Formations" data-en="Education">Formations</h2>
+
+      <div class="exp-card" id="e1">
+        <div class="exp-header" onclick="toggle('e1')">
+          <div class="exp-icon">🎓</div>
+          <div class="exp-meta">
+            <div class="exp-title" data-fr="Ingénieur — Informatique Industrielle" data-en="Engineering Degree — Industrial Computing">Ingénieur — Informatique Industrielle</div>
+            <div class="exp-subtitle" data-fr="École Polytechnique de l'Université de Tours (Polytech Tours)" data-en="Polytechnic School of the University of Tours (Polytech Tours)">École Polytechnique de l'Université de Tours (Polytech Tours)</div>
+          </div>
+          <div class="exp-right">
+            <span class="exp-period">2018 — 2021</span>
+            <span class="exp-type" data-fr="Bac+5 · CTI" data-en="Master's · CTI">Bac+5 · CTI</span>
+          </div>
+          <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <div class="exp-context"
+              data-fr="Formation d'ingénieur généraliste en informatique (spécialité industrielle), habilitée par la CTI. Socle théorique solide et projets pratiques orientés résolution de problèmes complexes — avec une forte ouverture au management et à l'international."
+              data-en="Generalist computer engineering degree (industrial specialisation), accredited by the CTI (French Engineering Accreditation Board). Strong theoretical foundations and practical projects focused on complex problem-solving — with significant exposure to management and international contexts.">
+              Formation d'ingénieur généraliste en informatique (spécialité industrielle), habilitée par la CTI. Socle théorique solide et projets pratiques orientés résolution de problèmes complexes — avec une forte ouverture au management et à l'international.
+            </div>
+            <p class="exp-missions-label" data-fr="Compétences développées — en lien direct avec les expériences" data-en="Skills developed — directly linked to professional experience">Compétences développées — en lien direct avec les expériences</p>
+            <ul class="mission-list">
+              <li data-fr="Management de projets et maîtrise d'ouvrage — fondement du pilotage chez Worldline" data-en="Project management and client ownership — foundation of steering role at Worldline">Management de projets et maîtrise d'ouvrage — fondement du pilotage chez Worldline</li>
+              <li data-fr="Intelligence artificielle, modélisation et aide à la décision — appliqués chez Keolis" data-en="Artificial intelligence, modelling and decision support — applied at Keolis">Intelligence artificielle, modélisation et aide à la décision — appliqués chez Keolis</li>
+              <li data-fr="Systèmes d'information, réseaux et sécurité — cohérence avec les environnements bancaires" data-en="Information systems, networks and security — consistent with banking environments">Systèmes d'information, réseaux et sécurité — cohérence avec les environnements bancaires</li>
+              <li data-fr="Leadership, communication avec des interlocuteurs techniques et non-techniques" data-en="Leadership, communication with both technical and non-technical stakeholders">Leadership, communication avec des interlocuteurs techniques et non-techniques</li>
+              <li data-fr="Aptitude au travail en contexte international (expérience internationale obligatoire au diplôme)" data-en="Aptitude for working in international contexts (mandatory international experience for graduation)">Aptitude au travail en contexte international (expérience internationale obligatoire au diplôme)</li>
+              <li data-fr="Sciences humaines, RSE et gestion d'entreprise innovante" data-en="Humanities, CSR and innovative business management">Sciences humaines, RSE et gestion d'entreprise innovante</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag" data-fr="Gestion de projets" data-en="Project Management">Gestion de projets</span>
+              <span class="tag">IA</span>
+              <span class="tag" data-fr="Systèmes d'information" data-en="Information Systems">Systèmes d'information</span>
+              <span class="tag" data-fr="Réseaux" data-en="Networks">Réseaux</span>
+              <span class="tag">Management</span>
+              <span class="tag">International</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card" id="e2">
+        <div class="exp-header" onclick="toggle('e2')">
+          <div class="exp-icon">📐</div>
+          <div class="exp-meta">
+            <div class="exp-title" data-fr="DUT — Informatique Industrielle" data-en="Two-year Technical Degree — Industrial Computing">DUT — Informatique Industrielle</div>
+            <div class="exp-subtitle" data-fr="IUT de Châteauroux / Orléans" data-en="IUT of Châteauroux / Orléans">IUT de Châteauroux / Orléans</div>
+          </div>
+          <div class="exp-right">
+            <span class="exp-period">2016 — 2018</span>
+            <span class="exp-type" data-fr="Bac+2" data-en="2-yr degree">Bac+2</span>
+          </div>
+          <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <div class="exp-context"
+              data-fr="Formation technologique en informatique industrielle constituant le socle technique ayant permis l'intégration du cycle ingénieur Polytech Tours."
+              data-en="Technological training in industrial computing, forming the technical foundation that led to entry into the Polytech Tours engineering programme.">
+              Formation technologique en informatique industrielle constituant le socle technique ayant permis l'intégration du cycle ingénieur Polytech Tours.
+            </div>
+            <p class="exp-missions-label" data-fr="Compétences développées" data-en="Skills developed">Compétences développées</p>
+            <ul class="mission-list">
+              <li data-fr="Programmation et algorithmique — bases solides réutilisées dans le développement chez Keolis" data-en="Programming and algorithms — solid foundations reused in development work at Keolis">Programmation et algorithmique — bases solides réutilisées dans le développement chez Keolis</li>
+              <li data-fr="Systèmes embarqués et automatisation industrielle" data-en="Embedded systems and industrial automation">Systèmes embarqués et automatisation industrielle</li>
+              <li data-fr="Électronique et interfaces numériques" data-en="Electronics and digital interfaces">Électronique et interfaces numériques</li>
+              <li data-fr="Méthodes de conception et documentation technique" data-en="Design methods and technical documentation">Méthodes de conception et documentation technique</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag" data-fr="Programmation" data-en="Programming">Programmation</span>
+              <span class="tag" data-fr="Systèmes embarqués" data-en="Embedded Systems">Systèmes embarqués</span>
+              <span class="tag" data-fr="Électronique" data-en="Electronics">Électronique</span>
+              <span class="tag" data-fr="Automatisation" data-en="Automation">Automatisation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTILS & MÉTHODES -->
+    <section class="section" style="margin-bottom:0">
+      <h2 class="section-title" data-fr="Outils &amp; Méthodes" data-en="Tools &amp; Methods">Outils &amp; Méthodes</h2>
+      <div class="two-cols">
+        <div>
+          <p class="tool-group-title" data-fr="Outils" data-en="Tools">Outils</p>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="Planview — pilotage de portefeuilles projets" data-en="Planview — project portfolio management">Planview — pilotage de portefeuilles projets</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="Archer — gestion des risques &amp; conformité" data-en="Archer — risk management &amp; compliance">Archer — gestion des risques &amp; conformité</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="ServiceNow / ServiceLine — ITSM &amp; ticketing" data-en="ServiceNow / ServiceLine — ITSM &amp; ticketing">ServiceNow / ServiceLine — ITSM &amp; ticketing</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="JIRA &amp; Confluence — suivi agile &amp; documentation" data-en="JIRA &amp; Confluence — agile tracking &amp; documentation">JIRA &amp; Confluence — suivi agile &amp; documentation</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="Python · VueJS — développement &amp; automatisation" data-en="Python · VueJS — development &amp; automation">Python · VueJS — développement &amp; automatisation</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="MS Project / Excel — planification &amp; reporting" data-en="MS Project / Excel — planning &amp; reporting">MS Project / Excel — planification &amp; reporting</span></div>
+        </div>
+        <div>
+          <p class="tool-group-title" data-fr="Méthodes" data-en="Methods">Méthodes</p>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="Agile — Scrum / Kanban / SAFe" data-en="Agile — Scrum / Kanban / SAFe">Agile — Scrum / Kanban / SAFe</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="ITIL Foundation — gestion des services IT" data-en="ITIL Foundation — IT service management">ITIL Foundation — gestion des services IT</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="Risk Management &amp; conformité réglementaire" data-en="Risk Management &amp; regulatory compliance">Risk Management &amp; conformité réglementaire</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="Cadrage BIA / DRP / Tests de résilience" data-en="BIA / DRP scoping / Resilience testing">Cadrage BIA / DRP / Tests de résilience</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="Analyse &amp; synthèse — reporting multi-niveaux" data-en="Analysis &amp; synthesis — multi-level reporting">Analyse &amp; synthèse — reporting multi-niveaux</span></div>
+          <div class="tool-item"><div class="tool-dot"></div><span class="tool-name" data-fr="Implémentation d'agents IA" data-en="AI agent implementation">Implémentation d'agents IA</span></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── RIGHT SIDEBAR ────────────────────────────────── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <p class="sidebar-title" data-fr="Compétences clés" data-en="Key Skills">Compétences clés</p>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name" data-fr="Pilotage de projets stratégiques" data-en="Strategic project management">Pilotage de projets stratégiques</span></div>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name" data-fr="Management d'équipe (8 pers.)" data-en="Team management (8 people)">Management d'équipe (8 pers.)</span></div>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name" data-fr="Leadership &amp; coordination multi-pôles" data-en="Leadership &amp; multi-team coordination">Leadership &amp; coordination multi-pôles</span></div>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name" data-fr="Systèmes bancaires &amp; paiement" data-en="Banking &amp; payment systems">Systèmes bancaires &amp; paiement</span></div>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name" data-fr="Veille &amp; conformité réglementaire" data-en="Regulatory watch &amp; compliance">Veille &amp; conformité réglementaire</span></div>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name" data-fr="Gestion des risques opérationnels" data-en="Operational risk management">Gestion des risques opérationnels</span></div>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name" data-fr="Environnement international" data-en="International environment">Environnement international</span></div>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name" data-fr="Double compétence tech &amp; management" data-en="Dual technical &amp; management expertise">Double compétence tech &amp; management</span></div>
+    </div>
+
+    <div class="sidebar-card">
+      <p class="sidebar-title" data-fr="Langues" data-en="Languages">Langues</p>
+      <div class="lang-row">
+        <span class="lang-name" data-fr="Français" data-en="French">Français</span>
+        <span class="lang-level" data-fr="Natif" data-en="Native">Natif</span>
+      </div>
+      <div class="lang-row" style="margin-bottom:0">
+        <span class="lang-name" data-fr="Anglais" data-en="English">Anglais</span>
+        <span class="lang-level" data-fr="Courant (B2+)" data-en="Fluent (B2+)">Courant (B2+)</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <p class="sidebar-title" data-fr="Centres d'intérêt" data-en="Interests">Centres d'intérêt</p>
+      <div class="hobby-grid">
+        <div class="hobby-item"><span class="hobby-emoji">✈️</span><span class="hobby-text" data-fr="Voyage" data-en="Travel">Voyage</span></div>
+        <div class="hobby-item"><span class="hobby-emoji">🎾</span><span class="hobby-text">Padel</span></div>
+        <div class="hobby-item"><span class="hobby-emoji">🏊</span><span class="hobby-text" data-fr="Natation &amp; SNSM" data-en="Swimming &amp; SNSM">Natation &amp; SNSM</span></div>
+        <div class="hobby-item"><span class="hobby-emoji">🎓</span><span class="hobby-text" data-fr="Intervenant Polytech" data-en="Polytech Guest Lecturer">Intervenant Polytech</span></div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <p class="sidebar-title" data-fr="Certification" data-en="Certification">Certification</p>
+      <div class="skill-row"><div class="skill-dot"></div><span class="skill-name">ITIL Foundation</span></div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════ -->
+<footer>
+  Andrey Pividori · <span data-fr="Portfolio interactif" data-en="Interactive Portfolio">Portfolio interactif</span> · 2025 · <a href="https://www.pividori.fr/resume" style="color:var(--gold);text-decoration:none;">pividori.fr/resume</a>
+</footer>
+
+<!-- ═══ CONTACT MODAL ═════════════════════════════════ -->
+<div class="modal-overlay" id="contactModal" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" title="Fermer">✕</button>
+
+    <div id="formContent">
+      <p class="modal-title" data-fr="Me contacter" data-en="Get in touch">Me contacter</p>
+      <p class="modal-subtitle" data-fr="Je lis tous les messages et réponds sous 48h." data-en="I read every message and reply within 48 hours.">Je lis tous les messages et réponds sous 48h.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label data-fr="Prénom" data-en="First name">Prénom</label>
+          <input type="text" id="f-first" placeholder="Marie" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label data-fr="Nom" data-en="Last name">Nom</label>
+          <input type="text" id="f-last" placeholder="Dupont" autocomplete="family-name">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label data-fr="Adresse e-mail" data-en="Email address">Adresse e-mail</label>
+        <input type="email" id="f-email" placeholder="marie.dupont@entreprise.com" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label data-fr="Objet" data-en="Subject">Objet</label>
+        <input type="text" id="f-subject" placeholder="Opportunité de collaboration…">
+      </div>
+
+      <div class="form-group">
+        <label data-fr="Message" data-en="Message">Message</label>
+        <textarea id="f-message" placeholder="Bonjour Andrey, …"></textarea>
+      </div>
+
+      <div id="form-error" style="font-size:12px;color:#c0392b;margin-bottom:12px;display:none;"></div>
+
+      <button class="form-send" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>
+        <span data-fr="Envoyer le message" data-en="Send message">Envoyer le message</span>
+      </button>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <div class="check">✅</div>
+      <h3 data-fr="Message envoyé !" data-en="Message sent!">Message envoyé !</h3>
+      <p data-fr="Merci pour votre message. Je vous répondrai dans les plus brefs délais." data-en="Thank you for reaching out. I'll get back to you as soon as possible.">Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ─── LANGUAGE TOGGLE ──────────────────────────────── */
+  let currentLang = 'fr';
+
+  function toggleLang() {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    applyLang(currentLang);
+  }
+
+  function applyLang(lang) {
+    // Swap button states
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('flag').textContent = lang === 'fr' ? '🇫🇷' : '🇬🇧';
+
+    // Update page title
+    document.title = lang === 'fr'
+      ? 'Andrey Pividori — Directeur de Projets'
+      : 'Andrey Pividori — Project Director';
+
+    // Translate all elements with data-fr / data-en attributes
+    document.querySelectorAll('[data-fr]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val !== null) el.innerHTML = val;
+    });
+  }
+
+  /* ─── EXP CARD TOGGLE ──────────────────────────────── */
+  function toggle(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  /* ─── CONTACT MODAL ────────────────────────────────── */
+  function openModal() {
+    document.getElementById('contactModal').classList.add('visible');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('f-first').focus(), 250);
+  }
+
+  function closeModal() {
+    document.getElementById('contactModal').classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('contactModal')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  function sendMessage() {
+    const first   = document.getElementById('f-first').value.trim();
+    const last    = document.getElementById('f-last').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const subject = document.getElementById('f-subject').value.trim();
+    const message = document.getElementById('f-message').value.trim();
+    const errEl   = document.getElementById('form-error');
+    const btn     = document.querySelector('.form-send');
+    const isEn    = currentLang === 'en';
+
+    // Validation
+    if (!first || !last) { showErr(isEn ? 'Please enter your first and last name.' : 'Merci de renseigner votre prénom et nom.'); return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr(isEn ? 'Please enter a valid email address.' : 'Merci de renseigner une adresse e-mail valide.'); return; }
+    if (!subject) { showErr(isEn ? 'Please enter a subject.' : 'Merci de renseigner un objet.'); return; }
+    if (!message) { showErr(isEn ? 'Please write your message.' : 'Merci de renseigner un message.'); return; }
+    errEl.style.display = 'none';
+
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite;width:14px;height:14px"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>&nbsp;${isEn ? 'Sending…' : 'Envoi en cours…'}`;
+
+    if (EMAILJS_PUBLIC_KEY !== 'VOTRE_PUBLIC_KEY') {
+      // ── EmailJS configured — real send ──
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name:  `${first} ${last}`,
+        from_email: email,
+        subject:    subject,
+        message:    message,
+        reply_to:   email,
+      })
+      .then(() => showSuccess(btn, isEn))
+      .catch(err => {
+        console.error('EmailJS error:', err);
+        showErr(isEn ? 'An error occurred. Please try again.' : 'Une erreur est survenue. Veuillez réessayer.');
+        resetBtn(btn, isEn);
+      });
+    } else {
+      // ── Dev / fallback mode — mailto ──
+      const body = encodeURIComponent(`De: ${first} ${last} <${email}>\n\n${message}`);
+      window.location.href = `mailto:andrey@pividori.fr?subject=${encodeURIComponent(subject)}&body=${body}`;
+      showSuccess(btn, isEn);
+    }
+  }
+
+  function showSuccess(btn, isEn) {
+    resetBtn(btn, isEn);
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('formContent').style.display = 'block';
+      document.getElementById('formSuccess').style.display = 'none';
+      ['f-first','f-last','f-email','f-subject','f-message'].forEach(id => document.getElementById(id).value = '');
+      closeModal();
+    }, 3500);
+  }
+
+  function resetBtn(btn, isEn) {
+    btn.disabled = false;
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>&nbsp;${isEn ? 'Send message' : 'Envoyer le message'}`;
+  }
+
+  function showErr(msg) {
+    const el = document.getElementById('form-error');
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

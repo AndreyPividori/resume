@@ -5,20 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Andrey Pividori — Directeur de Projets</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  // ⚠️ EMAILJS CONFIG — À remplacer avec tes vraies clés (voir guide de déploiement)
-  // 1. Crée un compte sur https://www.emailjs.com
-  // 2. Remplace les 3 valeurs ci-dessous par tes clés personnelles
-  const EMAILJS_PUBLIC_KEY  = 'gmtxF0ktUmQxrat6T';   // Account > API Keys
-  const EMAILJS_SERVICE_ID  = 'service_hs7hj0j';   // Email Services > Service ID
-  const EMAILJS_TEMPLATE_ID = 'template_h7bymrx';  // Email Templates > Template ID
-  document.addEventListener('DOMContentLoaded', () => {
-    if (EMAILJS_PUBLIC_KEY !== 'gmtxF0ktUmQxrat6T') {
-      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-    }
-  });
-</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -136,69 +122,6 @@
   .hobby-emoji { font-size:14px; }
   .hobby-text { font-size:11.5px; color:var(--ink-mid); line-height:1.3; }
 
-  /* ─── CONTACT MODAL ────────────────────────────────── */
-  .modal-overlay {
-    position:fixed; inset:0; background:rgba(26,26,24,0.55); backdrop-filter:blur(4px);
-    display:flex; align-items:center; justify-content:center; z-index:1000;
-    opacity:0; pointer-events:none; transition:opacity 0.22s;
-    padding:24px;
-  }
-  .modal-overlay.visible { opacity:1; pointer-events:all; }
-
-  .modal {
-    background:var(--white); border-radius:16px; padding:40px; width:100%; max-width:500px;
-    box-shadow:0 24px 80px rgba(26,26,24,0.18);
-    transform:translateY(16px); transition:transform 0.25s cubic-bezier(0.4,0,0.2,1);
-    position:relative;
-  }
-  .modal-overlay.visible .modal { transform:translateY(0); }
-
-  .modal-close {
-    position:absolute; top:16px; right:16px; width:32px; height:32px;
-    border-radius:50%; border:0.5px solid var(--border); background:var(--cream);
-    cursor:pointer; display:flex; align-items:center; justify-content:center;
-    color:var(--ink-light); transition:all 0.15s; font-size:16px; line-height:1;
-  }
-  .modal-close:hover { background:var(--ink); color:var(--cream); }
-
-  .modal-title { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:6px; }
-  .modal-subtitle { font-size:13px; color:var(--ink-light); margin-bottom:28px; }
-
-  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .form-group { margin-bottom:16px; }
-  .form-group label { display:block; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-light); margin-bottom:7px; }
-  .form-group input,
-  .form-group textarea {
-    width:100%; padding:11px 14px;
-    border:0.5px solid var(--border-strong); border-radius:8px;
-    font-family:'DM Sans',sans-serif; font-size:13.5px; color:var(--ink);
-    background:var(--cream); transition:border-color 0.15s, box-shadow 0.15s;
-    outline:none; resize:none;
-  }
-  .form-group input:focus,
-  .form-group textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(184,137,46,0.12); }
-  .form-group textarea { min-height:110px; }
-
-  .form-send {
-    width:100%; padding:13px; margin-top:4px;
-    background:var(--ink); color:var(--cream);
-    border:none; border-radius:8px; font-family:'DM Sans',sans-serif;
-    font-size:13.5px; font-weight:600; letter-spacing:0.04em;
-    cursor:pointer; transition:background 0.18s, transform 0.12s;
-    display:flex; align-items:center; justify-content:center; gap:8px;
-  }
-  .form-send:hover { background:#333330; transform:translateY(-1px); }
-  .form-send:active { transform:translateY(0); }
-  .form-send svg { width:14px; height:14px; }
-
-  .form-success {
-    text-align:center; padding:32px 0 8px;
-    display:none;
-  }
-  .form-success .check { font-size:40px; margin-bottom:12px; }
-  .form-success h3 { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--ink); margin-bottom:8px; }
-  .form-success p { font-size:13.5px; color:var(--ink-light); line-height:1.6; }
-
   /* ─── FOOTER ───────────────────────────────────────── */
   footer { text-align:center; padding:28px; font-size:12px; color:var(--ink-light); border-top:0.5px solid var(--border); }
 
@@ -211,8 +134,7 @@
     .main { grid-template-columns:1fr; padding:36px 24px; gap:36px; }
     .sidebar { position:static; }
     .two-cols { grid-template-columns:1fr; }
-    .form-row { grid-template-columns:1fr; }
-    .modal { padding:28px 20px; }
+
   }
 </style>
 </head>
@@ -246,10 +168,10 @@
 <!-- ═══ CONTACT BAR ════════════════════════════════════ -->
 <div class="contact-bar">
   <div class="contact-bar-inner">
-    <button class="contact-item" onclick="openModal()" title="Me contacter">
+    <a href="mailto:andrey@pividori.fr" class="contact-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
       andrey@pividori.fr
-    </button>
+    </a>
     <a href="https://resume.pividori.fr" target="_blank" class="contact-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       resume.pividori.fr
@@ -564,56 +486,6 @@
   Andrey Pividori · <span data-fr="Portfolio interactif" data-en="Interactive Portfolio">Portfolio interactif</span> · 2025 · <a href="https://resume.pividori.fr" style="color:var(--gold);text-decoration:none;">resume.pividori.fr</a>
 </footer>
 
-<!-- ═══ CONTACT MODAL ═════════════════════════════════ -->
-<div class="modal-overlay" id="contactModal" onclick="handleOverlayClick(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()" title="Fermer">✕</button>
-
-    <div id="formContent">
-      <p class="modal-title" data-fr="Me contacter" data-en="Get in touch">Me contacter</p>
-      <p class="modal-subtitle" data-fr="Je lis tous les messages et réponds sous 48h." data-en="I read every message and reply within 48 hours.">Je lis tous les messages et réponds sous 48h.</p>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label data-fr="Prénom" data-en="First name">Prénom</label>
-          <input type="text" id="f-first" placeholder="Marie" autocomplete="given-name">
-        </div>
-        <div class="form-group">
-          <label data-fr="Nom" data-en="Last name">Nom</label>
-          <input type="text" id="f-last" placeholder="Dupont" autocomplete="family-name">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label data-fr="Adresse e-mail" data-en="Email address">Adresse e-mail</label>
-        <input type="email" id="f-email" placeholder="marie.dupont@entreprise.com" autocomplete="email">
-      </div>
-
-      <div class="form-group">
-        <label data-fr="Objet" data-en="Subject">Objet</label>
-        <input type="text" id="f-subject" placeholder="Opportunité de collaboration…">
-      </div>
-
-      <div class="form-group">
-        <label data-fr="Message" data-en="Message">Message</label>
-        <textarea id="f-message" placeholder="Bonjour Andrey, …"></textarea>
-      </div>
-
-      <div id="form-error" style="font-size:12px;color:#c0392b;margin-bottom:12px;display:none;"></div>
-
-      <button class="form-send" onclick="sendMessage()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>
-        <span data-fr="Envoyer le message" data-en="Send message">Envoyer le message</span>
-      </button>
-    </div>
-
-    <div class="form-success" id="formSuccess">
-      <div class="check">✅</div>
-      <h3 data-fr="Message envoyé !" data-en="Message sent!">Message envoyé !</h3>
-      <p data-fr="Merci pour votre message. Je vous répondrai dans les plus brefs délais." data-en="Thank you for reaching out. I'll get back to you as soon as possible.">Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
-    </div>
-  </div>
-</div>
 
 <script>
   /* ─── LANGUAGE TOGGLE ──────────────────────────────── */
@@ -625,21 +497,15 @@
   }
 
   function applyLang(lang) {
-    // Swap button states
     document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('flag').textContent = lang === 'fr' ? '🇫🇷' : '🇬🇧';
-
-    // Update page title
     document.title = lang === 'fr'
       ? 'Andrey Pividori — Directeur de Projets'
       : 'Andrey Pividori — Project Director';
-
-    // Translate all elements with data-fr / data-en attributes
-    // Exclude the lang-toggle itself to prevent overwriting flag + buttons
     const toggle = document.querySelector('.lang-toggle');
     document.querySelectorAll('[data-fr]').forEach(el => {
-      if (toggle && toggle.contains(el)) return; // skip toggle children
+      if (toggle && toggle.contains(el)) return;
       const val = el.getAttribute('data-' + lang);
       if (val !== null) el.innerHTML = val;
     });
@@ -648,91 +514,6 @@
   /* ─── EXP CARD TOGGLE ──────────────────────────────── */
   function toggle(id) {
     document.getElementById(id).classList.toggle('open');
-  }
-
-  /* ─── CONTACT MODAL ────────────────────────────────── */
-  function openModal() {
-    document.getElementById('contactModal').classList.add('visible');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => document.getElementById('f-first').focus(), 250);
-  }
-
-  function closeModal() {
-    document.getElementById('contactModal').classList.remove('visible');
-    document.body.style.overflow = '';
-  }
-
-  function handleOverlayClick(e) {
-    if (e.target === document.getElementById('contactModal')) closeModal();
-  }
-
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-  function sendMessage() {
-    const first   = document.getElementById('f-first').value.trim();
-    const last    = document.getElementById('f-last').value.trim();
-    const email   = document.getElementById('f-email').value.trim();
-    const subject = document.getElementById('f-subject').value.trim();
-    const message = document.getElementById('f-message').value.trim();
-    const errEl   = document.getElementById('form-error');
-    const btn     = document.querySelector('.form-send');
-    const isEn    = currentLang === 'en';
-
-    // Validation
-    if (!first || !last) { showErr(isEn ? 'Please enter your first and last name.' : 'Merci de renseigner votre prénom et nom.'); return; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr(isEn ? 'Please enter a valid email address.' : 'Merci de renseigner une adresse e-mail valide.'); return; }
-    if (!subject) { showErr(isEn ? 'Please enter a subject.' : 'Merci de renseigner un objet.'); return; }
-    if (!message) { showErr(isEn ? 'Please write your message.' : 'Merci de renseigner un message.'); return; }
-    errEl.style.display = 'none';
-
-    // Loading state
-    btn.disabled = true;
-    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite;width:14px;height:14px"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>&nbsp;${isEn ? 'Sending…' : 'Envoi en cours…'}`;
-
-    if (EMAILJS_PUBLIC_KEY !== 'gmtxF0ktUmQxrat6T') {
-      // ── EmailJS configured — real send ──
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        from_name:  `${first} ${last}`,
-        from_email: email,
-        subject:    subject,
-        message:    message,
-        reply_to:   email,
-      })
-      .then(() => showSuccess(btn, isEn))
-      .catch(err => {
-        console.error('EmailJS error:', err);
-        showErr(isEn ? 'An error occurred. Please try again.' : 'Une erreur est survenue. Veuillez réessayer.');
-        resetBtn(btn, isEn);
-      });
-    } else {
-      // ── Dev / fallback mode — mailto ──
-      const body = encodeURIComponent(`De: ${first} ${last} <${email}>\n\n${message}`);
-      window.location.href = `mailto:andrey@pividori.fr?subject=${encodeURIComponent(subject)}&body=${body}`;
-      showSuccess(btn, isEn);
-    }
-  }
-
-  function showSuccess(btn, isEn) {
-    resetBtn(btn, isEn);
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-    setTimeout(() => {
-      document.getElementById('formContent').style.display = 'block';
-      document.getElementById('formSuccess').style.display = 'none';
-      ['f-first','f-last','f-email','f-subject','f-message'].forEach(id => document.getElementById(id).value = '');
-      closeModal();
-    }, 3500);
-  }
-
-  function resetBtn(btn, isEn) {
-    btn.disabled = false;
-    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>&nbsp;${isEn ? 'Send message' : 'Envoyer le message'}`;
-  }
-
-  function showErr(msg) {
-    const el = document.getElementById('form-error');
-    el.textContent = msg;
-    el.style.display = 'block';
   }
 </script>
 
